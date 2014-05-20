@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <title>You just got your info stolen.</title>
+  </head>
+
+  <body>
+    You are seeing this page because you've become the victim of a fake Cross-Site Scripting (XSS) attack.
+
+    <h2>Request Parameters</h2>
+    <p>The following information could have been made available to an attacker.
+
+    <table border="1" width="60%">
+      <tr>
+        <th>Key</th>
+        <th>Value</th>
+      </tr>
+
+      <% @request_params.each do |key, value| %>
+        <tr>
+          <td><i><%= h(key) %></i></td>
+          <td><%= h(value) %></td>
+        </tr>
+      <% end %>
+    </table>
+
+    <% if @return_to %>
+      Go <a href="<%= @return_to %>">Back</a>.
+    <% end %>
+  </body>
+</html>
